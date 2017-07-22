@@ -49,9 +49,7 @@ var config = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-            }
+            __IS_PROD__: IS_PROD
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',

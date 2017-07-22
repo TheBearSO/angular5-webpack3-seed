@@ -2,9 +2,10 @@
   "name": "angular-seed",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server --watch-poll",
+    "start": "SET NODE_ENV='prod' & webpack-dev-server --watch-poll",
     "watch": "webpack --watch --progress",
-    "build": "SET NODE_ENV='production' & webpack -p --progress"
+    "build": "NODE_ENV='production' & webpack -p --progress",
+    "build-win": "SET NODE_ENV='production' & webpack -p --progress"
   },
   "licenses": [
     {
