@@ -1,6 +1,6 @@
 # angular4-webpack-minimal-seed
 This is a real minimal angular 4 seed project. There isn't any other javascript dependency that just angular 4 with its respective polyfills. <br>
-Ideal for demo propuse of for mount quick base project if you have knowledge to add more dependencies. I'm pretty sure that you won't have any dependency problem. <br> <br>
+Ideal for demo propuse of for mount quick base project if you have knowledge to add more dependencies. <br> <br>
 
 ## Pre-requisites
 - Firstly, install node.js in your computer: https://nodejs.org/en/download/current/
