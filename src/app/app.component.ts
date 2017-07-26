@@ -1,16 +1,13 @@
 import {Component, OnInit} from "@angular/core";
 
 @Component({
-    selector: "my-app",
+    selector: "app",
     template: require("./app.html")
 })
 export class AppComponent implements OnInit {
 
-    constructor() {
-    }
+    constructor() {}
 
-    ngOnInit () {
-
-    }
+    ngOnInit (): void {}
 
 }
