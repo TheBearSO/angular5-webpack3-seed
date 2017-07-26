@@ -4,24 +4,20 @@ import { Router, RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 
-import { appRoutes } from "./app.routes";
-import { AppComponent } from "./app.component";
-import { ComponentModule } from "./components/component.module";
+import { UserComponent } from "./user/user.component";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(appRoutes),
-        ComponentModule
+        RouterModule
     ],
     declarations: [
-        AppComponent,
+        UserComponent,
     ],
-    bootstrap: [
-        AppComponent
-    ],
-    providers: []
+    bootstrap: [],
+    providers: [],
+    exports: []
 })
-export class AppModule { }
+export class ComponentModule { }

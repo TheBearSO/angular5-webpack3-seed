@@ -1,5 +1,6 @@
 <section id="user">
     <div class="col col-md-12">
+        <h3>Users as Demo Component</h3>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h5 class="title">Users</h5>
@@ -16,18 +17,10 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of users">
-                            <td>
-                                {{user.name}}
-                            </td>
-                            <td>
-                                {{user.email}}
-                            </td>
-                            <td>
-                                {{user.phone}}
-                            </td>
-                            <td>
-                                {{user.website}}
-                            </td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.phone}}</td>
+                            <td>{{user.website}}</td>
                         </tr>
                     </tbody>
                 </table>
