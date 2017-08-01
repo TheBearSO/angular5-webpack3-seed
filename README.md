@@ -8,7 +8,9 @@ Ideal for mount a quick base project if you have knowledge to add more dependenc
 - Later, install globally following programs: ```npm install webpack webpack-dev-server -g```
 
 ## Installation and Initialization
-Now, move inside the project folder and run ```npm install``` to install all dependencies listed on package.json.<br> 
+Now, move inside the project folder and run:
+- ```npm install``` (to install all dependencies listed on package.json)<br> 
+
 After that, you can use following commands:
 
 - ```npm start``` (watch changes and start a webpack dev server on http://localhost:2000)
