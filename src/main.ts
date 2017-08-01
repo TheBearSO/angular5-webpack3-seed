@@ -1,5 +1,3 @@
-import './polyfills.ts';
-import './vendor.ts';
 import './main.less';
 
 import { enableProdMode } from '@angular/core';
