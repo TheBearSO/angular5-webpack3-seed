@@ -1,5 +1,5 @@
 # angular4-webpack-minimal-seed
-This is a real minimal angular 4 seed project with production ready webpack 2 config. There isn't any other javascript dependency that just angular 4 with its respective polyfills. <br>
+This is a real minimal `angular4` seed project with production ready `webpack2` config. There isn't any other javascript dependency that just angular with its respective polyfills. <br>
 Ideal for mount a quick base project if you have knowledge to add more dependencies. You won't lose hours dealing with unknown dependencies. <br> <br>
 
 
