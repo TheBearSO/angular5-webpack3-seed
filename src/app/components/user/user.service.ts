@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
-
+import { Observable } from "rxjs/Observable";
 import { User } from './user';
+import "rxjs/add/operator/map";
+import 'rxjs/add/operator/share';
 
 @Injectable()
 export class UserService {
@@ -11,11 +12,11 @@ export class UserService {
     private http: Http
   ) { }
 
-  getAll(): Promise<Array<User>> {
-    return this.http.get('https://jsonplaceholder.typicode.com/users')
-      .toPromise()
-      .then(response => response.json())
-      .catch(error => error);
+  getAll(): Observable<Array<User>> {
+    return this.http
+      .get('https://jsonplaceholder.typicode.com/users')
+      .map((response: Response) => response.json())
+      .share();
   }
 
 }

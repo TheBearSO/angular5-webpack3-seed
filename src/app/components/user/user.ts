@@ -1,8 +1,8 @@
 export class User {
-  private id: number;
-  private name: string;
-  private username: string;
-  private email: string;
-  private phone: string;
-  private website: string;
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  website: string;
 }

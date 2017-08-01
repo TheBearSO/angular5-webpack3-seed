@@ -20,8 +20,8 @@ export class UserComponent implements OnInit {
     }
 
     private getUsers(): void {
-        this.UserService.getAll().then( (users: Array<User>) => {
+        this.UserService.getAll().subscribe( (users: Array<User>) => {
             this.users = users;
-        })
+        });
     }
 }
