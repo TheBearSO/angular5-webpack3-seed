@@ -29,7 +29,14 @@ var config = {
     },
     module: {
         exprContextCritical: false,
-        rules: [{
+        rules: [
+            {
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: 'tslint-loader',
+                enforce: 'pre'
+            },
+            {
                 test: /\.ts$/,
                 include: SRC,
                 use: 'awesome-typescript-loader'
