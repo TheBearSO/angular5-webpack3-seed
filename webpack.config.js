@@ -8,7 +8,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const IS_PROD = (process.env.NODE_ENV === 'production');
 const SRC = path.resolve(__dirname, 'src');
 const WWWROOT = path.resolve(__dirname, 'wwwroot');
-const DIST = path.join(WWWROOT, '/dist');
 
 var config = {
     entry: {
@@ -18,7 +17,7 @@ var config = {
     output: {
         path: WWWROOT,
         publicPath: '/',
-        filename: (IS_PROD ? 'dist/js/[name].[hash:8].js' : 'dist/js/[name].js')
+        filename: (IS_PROD ? 'dist/js/[name].[hash:8].min.js' : 'dist/js/[name].js')
     },
     resolve: {
         unsafeCache: true,
@@ -62,10 +61,10 @@ var config = {
     },
     plugins: [
         new webpack.DefinePlugin({
+            '__IS_PROD__': IS_PROD,
             'process.env': {
                 'NODE_ENV': process.env.NODE_ENV
-            },
-            __IS_PROD__: IS_PROD
+            }
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
@@ -73,20 +72,18 @@ var config = {
             chunks: ['vendor', 'index'],
             filename: 'index.html'
         }),
-        new CleanWebpackPlugin([
-            DIST,
-        ]),
+        new CleanWebpackPlugin(['./wwwroot/dist']),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: Infinity,
         }),
-        new ExtractTextPlugin(
-            IS_PROD ? 'dist/css/styles.[hash:8].css' : 'dist/css/styles.css'
-        ),
+        new ExtractTextPlugin({
+            filename: IS_PROD ? 'dist/css/styles.[hash:8].min.css' : 'dist/css/styles.css'
+        }),
     ]
 };
 
-if (!IS_PROD) {
+if (IS_PROD) {
     config.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: false,
