@@ -15,8 +15,7 @@ After that, you can use following commands:
 
 - ```npm start``` (watch changes and start a webpack dev server on http://localhost:2000)
 - ```npm run watch``` (just watch changes)
-- ```npm run build``` (build to production UNIX/LINUX)
-- ```npm run build-win``` (build to production WINDOWS)
+- ```npm run build``` (build to production)
 
 ## License
 MIT license: www.opensource.org/licenses/MIT
