@@ -31,12 +31,6 @@ var config = {
         rules: [
             {
                 test: /\.ts$/,
-                exclude: /node_modules/,
-                use: 'tslint-loader',
-                enforce: 'pre'
-            },
-            {
-                test: /\.ts$/,
                 include: SRC,
                 use: 'awesome-typescript-loader'
             },
@@ -85,10 +79,15 @@ var config = {
 
 if (IS_PROD) {
     config.plugins.push(
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: false,
-            output: {
+            output: { //Remove libs comments
                 comments: false,
+            },
+            compress: { //Remove console.logs and warnings
+                warnings: false,
+                drop_console: true
             }
         })
     );
