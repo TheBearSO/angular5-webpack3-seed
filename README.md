@@ -12,7 +12,7 @@ Now, move inside the project folder and run:
 
 After that, you can use following commands:
 
-- ```npm start``` (watch changes and start a webpack dev server on http://localhost:2000)
+- ```npm start``` (watch changes and start a webpack dev server on http://localhost:3000)
 - ```npm run watch``` (just watch changes)
 - ```npm run build``` (build to production)
 
