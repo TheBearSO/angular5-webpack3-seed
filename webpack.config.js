@@ -1,10 +1,13 @@
+//node/webpack
 const webpack = require('webpack');
 const path = require('path');
 
+//webapck plugins
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+//Custom variables
 const IS_PROD = (process.env.NODE_ENV === 'production');
 const SRC = path.resolve(__dirname, 'src');
 const WWWROOT = path.resolve(__dirname, 'wwwroot');
@@ -37,7 +40,11 @@ var config = {
             {
                 test: /.html$/,
                 include: SRC,
-                use: 'html-loader'
+                use: 'html-loader?-minimize'
+            },
+            {
+                test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+                loader: 'url-loader'
             },
             {
                 test: /\.less$/,
@@ -54,32 +61,29 @@ var config = {
         ]
     },
     plugins: [
-        new webpack.DefinePlugin({
-            '__IS_PROD__': IS_PROD,
-            'process.env': {
-                'NODE_ENV': process.env.NODE_ENV
-            }
+        new webpack.optimize.ModuleConcatenationPlugin(), //Feature of webpack 3 https://medium.com/webpack/webpack-3-official-release-15fd2dd8f07b
+        new CleanWebpackPlugin(['./wwwroot/dist']), //Clean/remove files before build
+        new webpack.DefinePlugin({ //Set global variables to use in angular app
+            '__IS_PROD__': IS_PROD
         }),
-        new HtmlWebpackPlugin({
+        new webpack.optimize.CommonsChunkPlugin({ //Remove common imports/code
+            name: 'vendor',
+            minChunks: Infinity,
+        }),
+        new ExtractTextPlugin({ //Extract css and create a file with all styles
+            filename: IS_PROD ? 'dist/css/styles.[hash:8].min.css' : 'dist/css/styles.css'
+        }),
+        new HtmlWebpackPlugin({ //Inject scripts into index.html and copy to wwwroot/assets
             template: './src/index.html',
             inject: true,
             chunks: ['vendor', 'index'],
             filename: 'index.html'
-        }),
-        new CleanWebpackPlugin(['./wwwroot/dist']),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: Infinity,
-        }),
-        new ExtractTextPlugin({
-            filename: IS_PROD ? 'dist/css/styles.[hash:8].min.css' : 'dist/css/styles.css'
-        }),
+        })
     ]
 };
 
-if (IS_PROD) {
+if (IS_PROD) { //PRODUCTION (npm run build)
     config.plugins.push(
-        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: false,
             output: { //Remove libs comments
@@ -91,12 +95,12 @@ if (IS_PROD) {
             }
         })
     );
-} else {
+} else { //DEBUG (npm start)
     config.devtool = 'eval-cheap-module-source-map';
     config.devServer = {
         contentBase: WWWROOT,
-        compress: true,
         port: 3000,
+        compress: true,
         historyApiFallback: true
     };
 }

@@ -9,6 +9,11 @@
       "es6",
       "dom"
     ],
-    "types": ["node"]
-  }
+    "types": [
+      "node"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
