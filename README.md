@@ -12,9 +12,15 @@ Now, move inside the project folder and run:
 
 After that, you can use following commands:
 
-- ```npm start``` (watch changes and start a webpack dev server on http://localhost:3000)
-- ```npm run watch``` (just watch changes)
-- ```npm run build``` (build to production)
+|Command|Description|
+|:--:|:----------|
+|**```npm start```**|Watch changes and start a webpack dev server on http://localhost:3000|
+|**```npm start```**|Only watch changes|
+|**```npm start```**|Build to production|
+
+
+## Pending tasks/work:
+- [ ] Add angular AOT compilation.
 
 ## License
 MIT license: www.opensource.org/licenses/MIT
