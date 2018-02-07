@@ -15,8 +15,8 @@ After that, you can use following commands:
 |Command|Description|
 |:--:|:----------|
 |**```npm start```**|Watch changes and start a webpack dev server on http://localhost:3000|
-|**```npm start```**|Only watch changes|
-|**```npm start```**|Build to production|
+|**```npm watch```**|Only watch changes|
+|**```npm build```**|Build to production|
 
 
 ## Pending tasks/work:
