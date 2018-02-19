@@ -20,7 +20,7 @@ After that, you can use following commands:
 
 
 ## Pending tasks/work:
-- [ ] Improve docs specifing all features on the seed project.
+- [ ] Improve docs specifing all features of the seed project.
 - [ ] Add angular AOT compilation.
 
 ## License
